@@ -2,11 +2,38 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Aschenputtel</title>
+    <link rel="stylesheet" href="./photon/css/photon.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./mainwindow.js"></script>
 </head>
 <body>
-<p>
-    Hello!
-</p>
+<div class="window">
+    <header class="toolbar toolbar-header" style="height:32px;">
+        <div class="toolbar-actions">
+            <!-- ツールバー -->
+            <div class="btn-group">
+                <!-- 戻る 更新 進む -->
+                <button class="btn btn-default" id="back">
+                    <span class="icon icon-left-bold"></span>
+                </button>
+                <button class="btn btn-default" id="reload">
+                    <span class="icon icon-cw"></span>
+                </button>
+                <button class="btn btn-default" id="forward">
+                    <span class="icon icon-right-bold"></span>
+                </button>
+            </div>
+            <button class="btn btn-default" id="mystudio">
+                    <span class="icon icon-home"></span>マイスタジオ
+            </button>
+        </div>
+    </header>
+    <div id="window-content">
+        <webview id="webview" src="http://sp.pf.mbga.jp/12008305/" 
+        useragent="Mozilla/5.0 (Linux; Android 6.0.1; SO-02G Build/23.5.B.0.303) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.89 Mobile Safari/537.36"
+        preload="./preload.js"></webview>
+    </div>
+</div>
 </body>
 </html>
