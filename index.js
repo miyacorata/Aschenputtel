@@ -63,13 +63,6 @@ const templateMenu = [
         label:'表示(&V)',
         submenu: [
             {
-                label:'戻る(&B)',
-                accelerator:'Alt+Left',
-                click(item,focusedWindow){
-                    if(focusedWindow)focusedWindow.webContents.goBack();
-                }
-            },
-            {
                 label:'最前面表示(&T)',
                 type:'checkbox',
                 accelerator:'CmdOrCtrl+T',
