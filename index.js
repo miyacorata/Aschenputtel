@@ -4,7 +4,6 @@ const electron = require("electron");
 const app = electron.app;
 const Menu = electron.Menu;
 const dialog = electron.dialog;
-// const window.jQuery = window.$ = require("jquery");
 
 const BrowserWindow = electron.BrowserWindow;
 
@@ -104,7 +103,7 @@ const templateMenu = [
                 label:'マイスタジオ(&M)',
                 accelerator:'CmdOrCtrl+M',
                 click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fmypage')
+                    if(focusedWindow) focusedWindow.webContents.webview.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fmypage')
                 }
             },
             {
