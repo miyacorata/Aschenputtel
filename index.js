@@ -9,6 +9,7 @@ const shell = electron.shell;
 const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
+let splashWindow = null;
 
 app.on("window-all-closed", () => {
     if(process.platform != "darwin") {
@@ -17,6 +18,20 @@ app.on("window-all-closed", () => {
 });
 
 app.on("ready", () => {
+    splashWindow = new BrowserWindow(
+        {
+            width:400,
+            height:200,
+            useContentSize:true,
+            transparent:true,
+            frame:false,
+            alwaysOnTop:true,
+            skipTaskbar:true
+        }
+    );
+    splashWindow.loadURL(
+        'file://'+__dirname+'/splash.html'
+    );
     mainWindow = new BrowserWindow(
         {
             width:320,
@@ -28,14 +43,12 @@ app.on("ready", () => {
             fullscreen:false,
             fullscreenable:false,
             title:'Aschenputtel',
+            show:false
         }
     );
     mainWindow.loadURL(
         'file://'+__dirname+'/index.html'
     );
-    mainWindow.webContents.on('did-finish-load', () => {
-        mainWindow.webContents.insertCSS('body::-webkit-scrollbar{display: none;}');
-    });
     mainWindow.on("closed", () => {
         mainWindow = null;
     });
@@ -43,6 +56,12 @@ app.on("ready", () => {
         //event.preventDefault();
         mainWindow.setTitle('Aschenputtel');
     });
+    mainWindow.once("ready-to-show", () => {
+        mainWindow.show();
+    })
+    setTimeout(() => {
+        splashWindow.destroy();
+    }, 4000);
 });
 
 

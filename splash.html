@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Aschenputtel Splash</title>
+    <style>
+        html,body{
+            margin:0;padding:0;
+            background: transparent;
+            overflow: hidden;
+            animation: splash 4s ease 0s 1 alternate none running;
+        }
+        @keyframes splash {
+            0%{ opacity: 0; }
+            10%{ opacity: 1; }
+            80%{ opacity: 1; }
+            100%{ opacity: 0; }
+        }
+        #version{
+            position: absolute;
+            top: 153px;
+            left: 18.5px;
+            font-size:14px;
+            font-family: 'Segoe UI', monospace;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<img src="./image/splash.png">
+<div id="version">Ver 2.0.0</div>
+</body>
+</html>
