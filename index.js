@@ -4,6 +4,7 @@ const electron = require("electron");
 const app = electron.app;
 const Menu = electron.Menu;
 const dialog = electron.dialog;
+const shell = electron.shell;
 
 const BrowserWindow = electron.BrowserWindow;
 
@@ -86,7 +87,7 @@ const templateMenu = [
                 },
             },
             {
-                label: '開発者ツール',
+                label: '開発者ツール(App)',
                 accelerator: (process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I'),
                 click(item, focusWindow) {
                     if (focusWindow) {
@@ -96,56 +97,14 @@ const templateMenu = [
             }
         ]
     },
-    /*{
-        label:'移動(&J)',
-        submenu:[
-            {
-                label:'マイスタジオ(&M)',
-                accelerator:'CmdOrCtrl+M',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.webview.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fmypage')
-                }
-            },
-            {
-                label:'ぷちデレラ(&D)',
-                accelerator:'CmdOrCtrl+D',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fpetit_cg')
-                }
-            },
-            {
-                label:'ガチャ(&G)',
-                accelerator:'CmdOrCtrl+G',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fgacha')
-                }
-            },
-            {
-                label:'レッスン・特訓(&L)',
-                accelerator:'CmdOrCtrl+L',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fcard_str')
-                }
-            },
-            {
-                label:'フリートレード(&F)',
-                accelerator:'CmdOrCtrl+F',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fauction')
-                }
-            },
-            {
-                label:'プロフィール(&P)',
-                accelerator:'CmdOrCtrl+P',
-                click(item,focusedWindow){
-                    if(focusedWindow) focusedWindow.webContents.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fresults')
-                }
-            }
-        ]
-    },*/
     {
         label:'ヘルプ(&H)',
         submenu:[
+            {
+                label:'GitHub Wiki(&W)',
+                accelerator:'F1',
+                click(){shell.openExternal('https://github.com/miyacorata/Aschenputtel/wiki')}
+            },
             {
                 label:'Aschenputtelについて(&A)',
                 click(){
