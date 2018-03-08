@@ -63,6 +63,36 @@ const templateMenu = [
         label:'表示(&V)',
         submenu: [
             {
+                label:'戻る(&B)',
+                accelerator:'F4',
+                click(item,focusedWindow){
+                    if(focusedWindow){
+                        focusedWindow.webContents.send('jump','back');
+                    }
+                }
+            },
+            {
+                label:'更新(&R)',
+                accelerator:'F5',
+                click(item,focusedWindow){
+                    if(focusedWindow){
+                        focusedWindow.webContents.send('jump','reload');
+                    }
+                }
+            },
+            {
+                label:'進む(&F)',
+                accelerator:'F6',
+                click(item,focusedWindow){
+                    if(focusedWindow){
+                        focusedWindow.webContents.send('jump','forward');
+                    }
+                }
+            },
+            {
+                type:'separator'
+            },
+            {
                 label:'最前面表示(&T)',
                 type:'checkbox',
                 accelerator:'CmdOrCtrl+T',
@@ -83,16 +113,169 @@ const templateMenu = [
                 label: 'アプリケーションのリセット',
                 accelerator: 'CmdOrCtrl+R',
                 click(item, focusedWindow){
-                  if(focusedWindow) focusedWindow.loadURL('file://'+__dirname+'/index.html');
+                    if(focusedWindow) focusedWindow.loadURL('file://'+__dirname+'/index.html');
                 },
             },
             {
-                label: '開発者ツール(App)',
-                accelerator: (process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I'),
+                label: '開発者ツール[App]',
                 click(item, focusWindow) {
                     if (focusWindow) {
                         focusWindow.webContents.toggleDevTools();
                     }
+                }
+            },
+            {
+                label:'開発者ツール[Webview]',
+                click(item,focusedWindow){
+                    if(focusedWindow) {
+                        focusedWindow.webContents.send('devtool');
+                    }
+                }
+            }
+        ]
+    },
+    {
+        label:'移動(&J)',
+        submenu:[
+            {
+                label:'マイスタジオ',
+                accelerator:'1',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send('jump','mystudio');
+                }
+            },
+            {
+                label:'ぷちデレラ',
+                accelerator:'2',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send('jump','petit');
+                }
+            },
+            {
+                label:'ガチャ',
+                accelerator:'3',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send('jump','gacha');
+                }
+            },
+            {
+                label:'レッスン・特訓',
+                accelerator:'4',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send('jump','lesson');
+                }
+            },
+            {
+                label:'フリートレード',
+                accelerator:'5',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send('jump','freetrade');
+                }
+            },
+            {
+                type:'separator'
+            },
+            {
+                label:'アイテム',
+                submenu:[
+                    {
+                        label:'贈り物',
+                        accelerator:'6',
+                        click(item,focusedWindow){
+                            focusedWindow.webContents.send('jump','giftbox');
+                        }
+                    },
+                    {
+                        label:'アイテム一覧',
+                        accelerator:'7',
+                        click(item,focusedWindow){
+                            focusedWindow.webContents.send(
+                                'link',
+                                'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fitem'
+                            );
+                        }
+                    },
+                    {
+                        label:'ショップ',
+                        accelerator:'8',
+                        click(item,focusedWindow){
+                            focusedWindow.webContents.send(
+                                'link',
+                                'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fshop'
+                            );
+                        }
+                    }
+                ]
+            },
+            {
+                label:'アイドル',
+                submenu:[
+                    {
+                        label:'アイドル一覧',
+                        accelerator:'9',
+                        click(item,focusedWindow){
+                            focusedWindow.webContents.send(
+                                'link',
+                                'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fcard_list'
+                            );
+                        }
+                    },
+                    {
+                        label:'女子寮/トレーナールーム',
+                        accelerator:'0',
+                        click(item,focusedWindow){
+                            focusedWindow.webContents.send(
+                                'link',
+                                'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fcard_storage'
+                            );
+                        }
+                    }
+                ]
+            },
+            {
+                type:'separator'
+            },
+            {
+                label:'お仕事',
+                accelerator:'Q',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send(
+                        'link',
+                        'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fquests'
+                    );
+                }
+            },
+            {
+                label:'LIVEバトル',
+                accelerator:'W',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send(
+                        'link',
+                        'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fbattles'
+                    );
+                }
+            },
+            {
+                type:'separator'
+            },
+            {
+                label:'自分のプロフィール',
+                accelerator:'P',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send(
+                        'link',
+                        'http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fresults'
+                    );
+                }
+            },
+            {
+                label:'プロダクション',
+                accelerator:'O',
+                click(item,focusedWindow){
+                    focusedWindow.webContents.send(
+                        'link',
+                        'http://sp.pf.mbga.jp/12008305/?guid=ON&amp;url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fknights%2Fknights_top_for_member'
+                    )
                 }
             }
         ]

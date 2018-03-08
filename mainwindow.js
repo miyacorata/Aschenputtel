@@ -1,4 +1,12 @@
+"use strict";
+
+const electron = require('electron');
+const ipcRenderer = electron.ipcRenderer;
+const dialog = electron.remote.dialog;
+const shell = electron.remote.shell;
+
 document.addEventListener('DOMContentLoaded',() => {
+    //toolbar
     const webview = document.getElementById('webview');
     const reloadButton = document.getElementById('reload');
     const backButton = document.getElementById('back');
@@ -13,21 +21,12 @@ document.addEventListener('DOMContentLoaded',() => {
     reloadButton.addEventListener('click',() => {
         webview.reload();
     });
-    /*document.body.addEventListener('keydown',(e) => {
-        if(e.key == 'R')webview.reload();
-    });*/
     backButton.addEventListener('click',() => {
         webview.goBack();
     });
-    /*backButton.addEventListener('keypress',(e) => {
-        if(e.key === 'F4')webview.goBack();
-    });*/
     forwardButton.addEventListener('click',() => {
         webview.goForward();
     });
-    /*forwardButton.addEventListener('keypress',(e) => {
-        if(e.key === 'F6')webview.goForward();
-    });*/
     mystudioButton.addEventListener('click',() => {
         webview.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fmypage');
     })
@@ -46,6 +45,40 @@ document.addEventListener('DOMContentLoaded',() => {
     });
     giftboxButton.addEventListener('click',() => {
         webview.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fpresent%2Frecieve')
-    })
+    });
 
+    webview.addEventListener("new-window",(e) => {
+        dialog.showMessageBox(
+            {
+                type:'question',
+                buttons:['Yes','No'],
+                title:'Question',
+                message:'外部リンクに移動しますか？',
+                detail:'はいをクリックするとブラウザでリンクを開きます\n(UserAgentはデフォルトのものになります)'
+            },
+            (key) => {
+                if(key === 0){
+                    shell.openExternal(e.url);
+                }
+            }
+        )
+    });
+
+});
+
+//shortcutkeys
+ipcRenderer.on('devtool',() => {
+    document.getElementById('webview').openDevTools();
+});
+
+ipcRenderer.on('jump',(item,page) => {
+    var button = document.getElementById(page);
+    if(button)button.click();
+    else console.log('[Error!] No such element. - '+page);
+});
+
+ipcRenderer.on('link',(item,url) => {
+    if(url.match(/^https?(:\/\/sp\.pf\.mbga\.jp\/12008305\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/)){
+        webview.loadURL(url);
+    }
 });
