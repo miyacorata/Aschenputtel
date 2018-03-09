@@ -308,6 +308,25 @@ const templateMenu = [
                 click(){shell.openExternal('https://github.com/miyacorata/Aschenputtel/wiki')}
             },
             {
+                label:'更新の確認(&C)',
+                click(){
+                    dialog.showMessageBox(
+                        {
+                            type:'question',
+                            buttons:['Yes','No'],
+                            title:'Question',
+                            message:'ブラウザを開いて更新を確認します',
+                            detail:'はいをクリックするとブラウザでGitHubのリリースページを開きます\n更新があれば最新版をダウンロードしてください\n\n現在のバージョン : '+app.getVersion()
+                        },
+                        (key) => {
+                            if(key === 0){
+                                shell.openExternal('https://github.com/miyacorata/Aschenputtel/releases');
+                            }
+                        }
+                    )
+                }
+            },
+            {
                 label:'Aschenputtelについて(&A)',
                 click(){
                     dialog.showMessageBox(
@@ -318,7 +337,7 @@ const templateMenu = [
                             buttons:'info',
                             buttons:['OK'],
                             message:'Aschenputtel',
-                            detail:'モバマスPのためのモバマスブラウザ\nDevelop : @miyacorata'
+                            detail:'モバマスPのためのモバマスブラウザ\nDevelop : @miyacorata\nVersion : '+app.getVersion()
                         }
                     )
                 }
