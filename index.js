@@ -158,35 +158,35 @@ const templateMenu = [
         submenu:[
             {
                 label:'マイスタジオ',
-                accelerator:'1',
+                accelerator:'CmdOrCtrl+1',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send('jump','mystudio');
                 }
             },
             {
                 label:'ぷちデレラ',
-                accelerator:'2',
+                accelerator:'CmdOrCtrl+2',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send('jump','petit');
                 }
             },
             {
                 label:'ガチャ',
-                accelerator:'3',
+                accelerator:'CmdOrCtrl+3',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send('jump','gacha');
                 }
             },
             {
                 label:'レッスン・特訓',
-                accelerator:'4',
+                accelerator:'CmdOrCtrl+4',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send('jump','lesson');
                 }
             },
             {
                 label:'フリートレード',
-                accelerator:'5',
+                accelerator:'CmdOrCtrl+5',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send('jump','freetrade');
                 }
@@ -199,14 +199,14 @@ const templateMenu = [
                 submenu:[
                     {
                         label:'贈り物',
-                        accelerator:'6',
+                        accelerator:'CmdOrCtrl+6',
                         click(item,focusedWindow){
                             focusedWindow.webContents.send('jump','giftbox');
                         }
                     },
                     {
                         label:'アイテム一覧',
-                        accelerator:'7',
+                        accelerator:'CmdOrCtrl+7',
                         click(item,focusedWindow){
                             focusedWindow.webContents.send(
                                 'link',
@@ -216,7 +216,7 @@ const templateMenu = [
                     },
                     {
                         label:'ショップ',
-                        accelerator:'8',
+                        accelerator:'CmdOrCtrl+8',
                         click(item,focusedWindow){
                             focusedWindow.webContents.send(
                                 'link',
@@ -231,7 +231,7 @@ const templateMenu = [
                 submenu:[
                     {
                         label:'アイドル一覧',
-                        accelerator:'9',
+                        accelerator:'CmdOrCtrl+9',
                         click(item,focusedWindow){
                             focusedWindow.webContents.send(
                                 'link',
@@ -241,7 +241,7 @@ const templateMenu = [
                     },
                     {
                         label:'女子寮/トレーナールーム',
-                        accelerator:'0',
+                        accelerator:'CmdOrCtrl+0',
                         click(item,focusedWindow){
                             focusedWindow.webContents.send(
                                 'link',
@@ -256,7 +256,7 @@ const templateMenu = [
             },
             {
                 label:'お仕事',
-                accelerator:'Q',
+                accelerator:'CmdOrCtrl+Q',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send(
                         'link',
@@ -266,7 +266,7 @@ const templateMenu = [
             },
             {
                 label:'LIVEバトル',
-                accelerator:'W',
+                accelerator:'CmdOrCtrl+W',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send(
                         'link',
@@ -279,7 +279,7 @@ const templateMenu = [
             },
             {
                 label:'自分のプロフィール',
-                accelerator:'P',
+                accelerator:'CmdOrCtrl+P',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send(
                         'link',
@@ -289,7 +289,7 @@ const templateMenu = [
             },
             {
                 label:'プロダクション',
-                accelerator:'O',
+                accelerator:'CmdOrCtrl+O',
                 click(item,focusedWindow){
                     focusedWindow.webContents.send(
                         'link',
