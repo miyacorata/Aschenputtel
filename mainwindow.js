@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded',() => {
     const giftboxButton = document.getElementById('giftbox');
 
     reloadButton.addEventListener('click',() => {
-        webview.reload();
+        webview.executeJavaScript('location.reload();');
     });
     backButton.addEventListener('click',() => {
-        webview.goBack();
+        webview.executeJavaScript('history.back();');
     });
     forwardButton.addEventListener('click',() => {
-        webview.goForward();
+        webview.executeJavaScript('history.forward();');
     });
     mystudioButton.addEventListener('click',() => {
         webview.loadURL('http://sp.pf.mbga.jp/12008305/?guid=ON&url=http%3A%2F%2F125.6.169.35%2Fidolmaster%2Fmypage');
