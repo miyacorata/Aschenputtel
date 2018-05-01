@@ -1,6 +1,6 @@
 {
   "name": "aschenputtel",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Browser for THE IDOLM@STER CINDERELLA GIRLS",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "miyacorata",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.8.3"
+    "electron": "^1.8.6"
   }
 }

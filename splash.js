@@ -6,4 +6,4 @@ const version = app.getVersion();
 
 document.addEventListener('DOMContentLoaded',() => {
     document.getElementById('version').innerHTML = 'Version '+version;
-})
+});
