@@ -327,7 +327,8 @@ app.on("ready", () => {
             fullscreen:false,
             fullscreenable:false,
             title:'Aschenputtel',
-            show:false
+            show:false,
+            backgroundColor:'#000'
         }
     );
     mainWindow.loadURL(
