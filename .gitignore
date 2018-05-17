@@ -60,3 +60,5 @@ typings/
 # ide
 /.idea
 /.vs
+icon.png
+icon.ico
