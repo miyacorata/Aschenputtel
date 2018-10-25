@@ -12,7 +12,7 @@ packager(
         arch:'x64,ia32',
         version:'1.8.2',
         overwrite:true,
-        asar:true,
+        asar:false,
         appVersion:packages['version'],
         appCopyright:'(c) 2018 '+packages['author'],
         win32metadata:{
